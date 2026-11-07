@@ -75,22 +75,22 @@ winctl 做的事很简单——**给这些窗口套上一根缰绳**。你想让
 
 ```cmd
 :: 让它变成带标题栏、可拖可缩放的普通窗口，并且锁住位置
-bin\winctl.exe --attach Client.exe --windowed --lockmove=user
+bin\winctl.exe --attach xxx.exe --windowed --lockmove=user
 
 :: 已经跑起来的目标，直接改开关
-bin\winctl.exe --set Client.exe topmost=off fullscreen=off lockmove=on
+bin\winctl.exe --set xxx.exe topmost=off fullscreen=off lockmove=on
 
 :: 看看现在到底是什么状态
-bin\winctl.exe --status Client.exe
+bin\winctl.exe --status xxx.exe
 
 :: 不要了，全部还原
-bin\winctl.exe --detach Client.exe
+bin\winctl.exe --detach xxx.exe
 
 :: 拒绝关闭的程序，强制结束
-bin\winctl.exe --kill Client.exe
+bin\winctl.exe --kill xxx.exe
 ```
 
-目标既可以写**进程名**（`Client.exe` 或 `Client` 都行），也可以写 **PID**。
+目标既可以写**进程名**（`xxx.exe` 或 `xxx` 都行），也可以写 **PID**。
 
 ---
 
@@ -99,7 +99,7 @@ bin\winctl.exe --kill Client.exe
 **① 教室软件学生端：无边框霸屏、狂抢置顶、关不掉**
 
 ```cmd
-bin\winctl32.exe --attach StudentMain.exe --windowed
+bin\winctl32.exe --attach xxx.exe --windowed
 ```
 
 一条命令三步到位：拆掉全屏霸屏、把标题栏补回来、摆成工作区 72% 的窗口并锁住位置。
@@ -115,7 +115,7 @@ winctl 的做法是：**让它照旧画完整的一帧，我们再把整幅画�
 窗口小了、画面全在，不会出现"只看到左上角"。
 
 ```cmd
-bin\winctl.exe --attach 远程桌面.exe --windowed
+bin\winctl.exe --attach xxx.exe --windowed
 ```
 
 鼠标坐标会**反向换算**，所以缩放之后你点右下角，点到的仍然是画面右下角。
@@ -125,7 +125,7 @@ bin\winctl.exe --attach 远程桌面.exe --windowed
 **③ 程序自己乱跑、乱改尺寸**
 
 ```cmd
-bin\winctl.exe --attach Tool.exe --lockmove=user --locksize=on
+bin\winctl.exe --attach xxx.exe --lockmove=user --locksize=on
 ```
 
 `--lockmove=user` 的意思是：**程序自己不许搬窗口，但你可以随便拖**。
@@ -134,7 +134,7 @@ bin\winctl.exe --attach Tool.exe --lockmove=user --locksize=on
 **④ 窗口一直闪、一直抢焦点**
 
 ```cmd
-bin\winctl.exe --attach Tool.exe --focus=on
+bin\winctl.exe --attach xxx.exe --focus=on
 ```
 
 它问"我是不是前台"，我们回答"是"。它想抢前台，我们直接把动作吞掉并告诉它"成功了"。
@@ -143,7 +143,7 @@ bin\winctl.exe --attach Tool.exe --focus=on
 **⑤ 想把一个程序"搬进"自己的界面里**
 
 ```cmd
-bin\winctl.exe --attach Tool.exe --remap=on
+bin\winctl.exe --attach xxx.exe --remap=on
 ```
 
 源窗口以原始尺寸待在屏幕外（照常运行、照常收帧），桌面上另开一个窗口显示它的完整画面。
@@ -152,7 +152,7 @@ bin\winctl.exe --attach Tool.exe --remap=on
 **⑥ 只想让它老实待在一个固定位置**
 
 ```cmd
-bin\winctl.exe --attach Tool.exe --freeze=on
+bin\winctl.exe --attach xxx.exe --freeze=on
 ```
 
 把**你按下开关那一刻**的置顶、位置、大小、全屏状态全部固化，之后谁也改不动，
